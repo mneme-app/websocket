@@ -1,0 +1,25 @@
+{
+  "name": "websocket",
+  "version": "1.0.0",
+  "description": "A websocket that is made to connect with the Mneme app in order to keep the app updated on changes to the database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mneme-app/websocket.git"
+  },
+  "author": "",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/mneme-app/websocket/issues"
+  },
+  "homepage": "https://github.com/mneme-app/websocket#readme",
+  "dependencies": {
+    "ws": "^8.14.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
