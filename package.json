@@ -4,7 +4,8 @@
   "description": "A websocket that is made to connect with the Mneme app in order to keep the app updated on changes to the database",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/mneme-app/websocket#readme",
   "dependencies": {
+    "@mneme_app/database-models": "^1.0.0",
     "ws": "^8.14.0"
   },
   "devDependencies": {
