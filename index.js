@@ -17,7 +17,9 @@ const server = new WebSocketServer({ server: httpServer });
 
 server.on("connection", (ws, req) => {
   console.log("A client connected", req.socket.remoteAddress);
-  ws.send(JSON.stringify({message:'Welcome!'}));
+  const cookie = req.headers.cookie
+  console.log(cookie);
+  ws.send(JSON.stringify({ message: "Welcome!" }));
 
   ws.on("message", (data) => {
     console.log(data);
