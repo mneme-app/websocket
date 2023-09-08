@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A websocket that is made to connect with the Mneme app in order to keep the app updated on changes to the database",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
@@ -19,6 +20,9 @@
   "homepage": "https://github.com/mneme-app/websocket#readme",
   "dependencies": {
     "@mneme_app/database-models": "^1.0.0",
+    "dotenv": "^16.3.1",
+    "http": "^0.0.1-security",
+    "mongoose": "^7.5.0",
     "ws": "^8.14.0"
   },
   "devDependencies": {

@@ -8,14 +8,34 @@
   <body>
     <h1>For testing web socket</h1>
 
+    <ol id="sources"></ol>
+    <ol id="notes"></ol>
+
     <script>
+      const sourceList = document.getElementById("sources");
+      const noteList = document.getElementById("notes");
+
       const wsOnClient = new WebSocket("ws:localhost:8080");
       wsOnClient.onopen = () => {
         console.log("Connection open!");
       };
 
       wsOnClient.onmessage = (message) => {
-        console.log(message.data);
+        const record = JSON.parse(message.data);
+        console.log(record);
+
+        if (!record.ns) return;
+
+        if (record.ns.coll === "sources") {
+          const li = document.createElement("li");
+          li.textContent = `${record.fullDocument.title}`;
+          sourceList.append(li);
+        }
+        if (record.ns.coll === "notes") {
+          const li = document.createElement("li");
+          li.textContent = `${record.fullDocument.text}`;
+          noteList.append(li);
+        }
       };
     </script>
   </body>
