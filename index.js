@@ -15,11 +15,22 @@ const quizChange = Quiz.watch();
 
 const server = new WebSocketServer({ server: httpServer });
 
-server.on("connection", (ws, req) => {
+server.on("connection", async (ws, req) => {
   console.log("A client connected", req.socket.remoteAddress);
-  const cookie = req.headers.cookie
-  console.log(cookie);
-  ws.send(JSON.stringify({ message: "Welcome!" }));
+  const cookies = req.headers.cookie;
+  console.log(cookies);
+  let token = cookies
+    ?.split("; ")
+    .find((cookie) => /token=/.test(cookie))
+    ?.split("=")[1];
+  console.log(token);
+  if (token) {
+    const user = await User.findOne({ refreshTokens: token });
+    console.log(user.username);
+    ws.send(JSON.stringify({ message: `Welcome, ${user.username}!` }));
+  } else {
+    ws.send(JSON.stringify({ message: "Welcome!"}))
+  }
 
   ws.on("message", (data) => {
     console.log(data);
