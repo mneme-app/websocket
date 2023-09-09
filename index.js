@@ -86,7 +86,7 @@ quizChange.on("change", (change) => {
       client.send(JSON.stringify(change));
     } else {
       console.log(
-        `User ${client.user.username} is not authorized to view quiz "${quiz.prompt}"`
+        `User ${client.user?.username} is not authorized to view quiz "${quiz.prompt}"`
       );
     }
   });
